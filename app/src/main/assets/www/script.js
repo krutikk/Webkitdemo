@@ -17,7 +17,7 @@ startApp(function () {
     };
     var android = bridge.interfaces.Android;
     appendText(android.helloFullSync("Web"));
-    android.helloWebPromise("Web").then(function (s) { appendText(s); });
+    android.callApi("Web").then(function (s) { appendText(s); });
     android.helloFullPromise("Web").then(function (s) { appendText(s); });
     android.registerFunction(function (i) {
         appendText(i.toLocaleString());

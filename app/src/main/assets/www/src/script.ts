@@ -19,7 +19,7 @@ startApp(() => {
     const android = bridge.interfaces.Android
 
     appendText(android.helloFullSync("Web"))
-    android.helloWebPromise("Web").then((s) => {appendText(s)})
+    android.callApi("Web").then((s) => {appendText(s)})
     android.helloFullPromise("Web").then((s) => {appendText(s)})
     
     android.registerFunction((i) => {
@@ -37,12 +37,14 @@ startApp(() => {
         })
     }).then(() => console.log("Function3 registered")).catch((err) => console.log(err.toString()))
 })
-
+callAPI(() => {
+android.callApi("API call").then((s) => {appendText(s)})
+})
 // Api definitions
 
 interface AndroidInterface {
     helloFullSync(name: string): string
-    helloWebPromise(name: string): Promise<string>
+    callApi(name: string): Promise<string>
     helloFullPromise(name: string): Promise<string>
     registerFunction(f: JSFunctionWithArg<number>): Promise<void>
     registerFunctionWithPromise(f: JSFunctionWithPromise<string>): Promise<void>

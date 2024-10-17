@@ -11,8 +11,9 @@ class AndroidNativeInterface(private val mainActivity: MainActivity): DefaultJSI
         return "hello $name"
     }
 
-    override fun helloWebPromise(name: String): String {
-        return "hello $name"
+    override fun callApi(name: String): String {
+        mainActivity.callApi(name)
+        return "Api called"
     }
 
     override fun helloFullPromise(name: String) = doInBackground<String> { promise ->
@@ -33,4 +34,5 @@ class AndroidNativeInterface(private val mainActivity: MainActivity): DefaultJSI
         mainActivity.registerFunctionToButton3(function)
         promise.resolve(Unit)
     }
+
 }

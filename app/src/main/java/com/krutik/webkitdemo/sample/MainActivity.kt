@@ -75,4 +75,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun callApi(s : String) {
+        Toast.makeText(this, "Calling API$s", Toast.LENGTH_SHORT).show()
+    }
 }

@@ -13,7 +13,7 @@ interface AndroidInterface {
     fun helloFullSync(name: String): String
 
     @NativeCall(CallType.WEB_CALL)
-    fun helloWebPromise(name: String): String
+    fun callApi(name: String): String
 
     @NativeCall(CallType.FULL_PROMISE)
     fun helloFullPromise(name: String): CallResolver<String>
@@ -26,6 +26,7 @@ interface AndroidInterface {
 
     @NativeCall(CallType.FULL_PROMISE)
     fun registerFunctionWithPromiseAndArg(function: JSFunctionWithPromiseAndArg<Add, String>): CallResolver<Unit>
+
 }
 
 data class Add(val a: Int, val b: Int)
